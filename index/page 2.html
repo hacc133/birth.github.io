@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday to You 💝</title>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        min-height: 100vh;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 75%, #00f2fe 100%);
+        background-size: 400% 400%;
+        animation: gradient 15s ease infinite;
+        font-family: 'Poppins', 'Segoe UI', sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        overflow-x: hidden;
+    }
+
+    @keyframes gradient {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    .floating-hearts {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        top: 0;
+        left: 0;
+    }
+
+    .heart {
+        position: absolute;
+        font-size: 2rem;
+        opacity: 0.6;
+        animation: float 6s infinite ease-in;
+    }
+
+    @keyframes float {
+        0% {
+            transform: translateY(100vh) rotate(0deg);
+            opacity: 0;
+        }
+        10% {
+            opacity: 0.8;
+        }
+        90% {
+            opacity: 0.8;
+        }
+        100% {
+            transform: translateY(-100vh) rotate(360deg);
+            opacity: 0;
+        }
+    }
+
+    .container {
+        max-width: 900px;
+        background: rgba(255,255,255,0.95);
+        border-radius: 30px;
+        padding: 50px 40px;
+        text-align: center;
+        box-shadow: 0 30px 60px rgba(0,0,0,0.3), inset 0 0 60px rgba(255,192,203,0.2);
+        backdrop-filter: blur(10px);
+        animation: slideUp 0.8s ease-out;
+    }
+
+    @keyframes slideUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    h1 {
+        font-size: 3.5rem;
+        margin-bottom: 10px;
+        background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-weight: 800;
+        letter-spacing: 1px;
+    }
+
+    .subtitle {
+        font-size: 1.8rem;
+        color: #764ba2;
+        margin-bottom: 30px;
+        font-weight: 600;
+    }
+
+    .intro-text {
+        font-size: 1.3rem;
+        margin-bottom: 40px;
+        color: #555;
+        line-height: 1.8;
+        font-style: italic;
+    }
+
+    .cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 25px;
+        margin-bottom: 40px;
+    }
+
+    .card {
+        background: linear-gradient(135deg, #667eea15, #f093fb15);
+        padding: 35px 25px;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        box-shadow: 0 15px 35px rgba(102, 126, 234, 0.2);
+        position: relative;
+        overflow: hidden;
+        border: 2px solid rgba(240, 147, 251, 0.3);
+    }
+
+    .card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+        transition: 0.5s;
+    }
+
+    .card:hover::before {
+        left: 100%;
+    }
+
+    .card:hover {
+        transform: translateY(-15px) scale(1.05);
+        box-shadow: 0 25px 50px rgba(240, 147, 251, 0.4);
+    }
+
+    .card span {
+        font-size: 3rem;
+        display: inline-block;
+        animation: bounce 2s infinite;
+    }
+
+    .card:nth-child(1) span { animation-delay: 0s; }
+    .card:nth-child(2) span { animation-delay: 0.2s; }
+    .card:nth-child(3) span { animation-delay: 0.4s; }
+    .card:nth-child(4) span { animation-delay: 0.6s; }
+
+    @keyframes bounce {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+    }
+
+    .hidden-text {
+        margin-top: 15px;
+        font-size: 1.05rem;
+        display: none;
+        color: #555;
+        font-weight: 500;
+        animation: fadeIn 0.4s ease;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    .music-btn {
+        margin-top: 20px;
+        padding: 14px 35px;
+        border: none;
+        border-radius: 25px;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        font-size: 1.1rem;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.3s;
+        box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+    }
+
+    .music-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 35px rgba(102, 126, 234, 0.6);
+    }
+
+    .mood {
+        margin-top: 40px;
+        padding-top: 30px;
+        border-top: 2px solid rgba(240, 147, 251, 0.3);
+    }
+
+    .mood p {
+        font-size: 1.3rem;
+        color: #764ba2;
+        margin-bottom: 20px;
+        font-weight: 600;
+    }
+
+    .mood button {
+        margin: 10px;
+        padding: 12px 25px;
+        border-radius: 25px;
+        border: 2px solid #f093fb;
+        cursor: pointer;
+        background: white;
+        color: #764ba2;
+        transition: all 0.3s;
+        font-size: 1rem;
+        font-weight: 600;
+    }
+
+    .mood button:hover {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        transform: scale(1.08);
+    }
+
+    #moodText {
+        margin-top: 20px;
+        font-size: 1.3rem;
+        color: #764ba2;
+        font-weight: 600;
+        animation: fadeIn 0.4s ease;
+    }
+
+    .birthday-message {
+        margin-top: 40px;
+        padding: 30px;
+        background: linear-gradient(135deg, #667eea15, #f093fb15);
+        border-radius: 20px;
+        border: 2px dashed #f093fb;
+    }
+
+    .birthday-message p {
+        font-size: 1.4rem;
+        color: #555;
+        line-height: 2;
+        font-weight: 500;
+    }
+
+    .candles {
+        margin: 30px 0;
+        font-size: 2rem;
+        animation: glow 1.5s ease-in-out infinite;
+    }
+
+    @keyframes glow {
+        0%, 100% { text-shadow: 0 0 5px #ff6b9d; }
+        50% { text-shadow: 0 0 20px #ff6b9d, 0 0 30px #ff6b9d; }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="floating-hearts" id="floatingHearts"></div>
+
+<div class="container">
+    <h1>🎂 Happy Birthday My friend💕</h1>
+    <div class="subtitle">To the Most Beautiful Girl in My Life 👑</div>
+    
+    <p class="intro-text">
+        Hey Beautiful! Today marks another year of your amazing existence, and I just had to tell you how much you mean to me.
+        <br>Click on each flower to read my thoughts about you... 💐
+    </p>
+
+    <div class="cards">
+        <div class="card" onclick="reveal(this)">
+            <span>🌹</span>
+            <div class="hidden-text">
+                You make my heart skip a beat every single day. 💫
+            </div>
+        </div>
+
+        <div class="card" onclick="reveal(this)">
+            <span>🌺</span>
+            <div class="hidden-text">
+                Your laugh is my favorite sound in the whole world. 💝
+            </div>
+        </div>
+
+        <div class="card" onclick="reveal(this)">
+            <span>🌻</span>
+            <div class="hidden-text">
+                I'm so lucky to have you as my friend. ✨
+            </div>
+        </div>
+
+        <div class="card" onclick="reveal(this)">
+            <span>🌷</span>
+            <div class="hidden-text">
+                Growing old with you is my favorite dream. 🎀
+            </div>
+        </div>
+
+        <div class="card" onclick="window.location.href='page 3.html'">
+            <span>🎁</span>
+            <div class="hidden-text">
+                Visit next special site! 🌟
+            </div>
+        </div>
+    </div>
+
+    <div class="mood">
+        <p>🎀 How are you feeling today?</p>
+        <button onclick="setMood('happy')">😊 Blessed</button>
+        <button onclick="setMood('calm')">✨ Grateful</button>
+        <button onclick="setMood('tired')">💖 Loved</button>
+
+        <div id="moodText"></div>
+    </div>
+
+    <div class="birthday-message">
+        <div class="candles">🕯️ ✨ 🕯️</div>
+        <p>
+            🎂 On this special day... <br>
+            May you feel as beautiful as you truly are,
+            <br>
+            May you chase every dream without hesitation,
+            <br>
+            And may you always know how much you matter.
+            <br>
+            <br>
+            <strong style="color: #764ba2;">Have the most magical birthday ever! 🎉💕</strong>
+        </p>
+        <div class="candles">🕯️ ✨ 🕯️</div>
+    </div>
+</div>
+
+<script>
+    // Create floating hearts
+    function createFloatingHeart() {
+        const hearts = ['❤️', '💕', '💖', '💗', '💝'];
+        const heart = document.createElement('div');
+        heart.classList.add('heart');
+        heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+        heart.style.left = Math.random() * 100 + '%';
+        heart.style.top = Math.random() * 20 + '%';
+        heart.style.animationDuration = (Math.random() * 4 + 5) + 's';
+        heart.style.animationDelay = Math.random() * 2 + 's';
+        document.getElementById('floatingHearts').appendChild(heart);
+
+        setTimeout(() => heart.remove(), 9000);
+    }
+
+    setInterval(createFloatingHeart, 500);
+
+    function reveal(card) {
+        const text = card.querySelector('.hidden-text');
+        text.style.display = text.style.display === 'block' ? 'none' : 'block';
+        card.style.background = text.style.display === 'block' 
+            ? 'linear-gradient(135deg, #f093fb25, #667eea25)' 
+            : 'linear-gradient(135deg, #667eea15, #f093fb15)';
+    }
+
+    const music = document.getElementById('music');
+    function toggleMusic() {
+        if (music.paused) {
+            music.play();
+            event.target.textContent = '⏸️ Pause Music ⏸️';
+        } else {
+            music.pause();
+            event.target.textContent = '🎵 Play Magical Music 🎵';
+        }
+    }
+
+    function setMood(mood) {
+        const moodText = document.getElementById('moodText');
+        if (mood === 'happy') {
+            moodText.innerHTML = "That's the spirit! You deserve all the happiness in the world 😊✨";
+        } else if (mood === 'calm') {
+            moodText.innerHTML = "A grateful heart is the most beautiful heart. You inspire us all 🌟💝";
+        } else {
+            moodText.innerHTML = "And you are so deeply loved! Never forget how special you are 💖🎀";
+        }
+    }
+</script>
+
+</body>
+</html>
